@@ -10,8 +10,8 @@ Create a .env file in src directory and declare the following enviroment variabl
 ACCOUNT_CLIENT_ID = 'ACCOUNT_CLIENT_IID'\
 ACCOUNT_REFRESH_TOKEN = 'ACCOUNT_REFRESH_TOKEN'\
 INVENTORY_ACCESS_TOKEN = 'INVENTORY_ACCESS_TOKEN'\
-CSV_ACCOUNT_PATH = './csv/accounts/BobsBurgersAccounts' \
-CSV_INVENTORY_PATH = './csv/inventory/BobsBurgersInventory'\
+CSV_ACCOUNT_PATH = '../csv/accounts/BobsBurgersAccounts' \
+CSV_INVENTORY_PATH = '../csv/inventory/BobsBurgersInventory'\
 
 #### Running
 Part 1 of the Assignment can be run using:\
