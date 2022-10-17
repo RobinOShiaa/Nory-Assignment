@@ -65,8 +65,8 @@ def _format_employees(employees: dict) -> list:
         "iban": "N/A",
         "bic": "N/A",
         "hired_date": emp.get("hiredDate"),
-        "department": emp.get("departments")[0] if (len(emp.get("departments")) > 0) else [],
-        "employeeGroups": emp.get("employeeGroups")[0] if (len(emp.get("employeeGroups")) > 0) else [],
+        "department": emp.get("departments")[0] if (len(emp.get("departments")) > 0) else 'N/A',
+        "employeeGroups": emp.get("employeeGroups")[0] if (len(emp.get("employeeGroups")) > 0) else 'N/A',
     } for emp in employees]
     
 def _get_employee_group_as_string(group_id: str, access_token: str) -> str:
