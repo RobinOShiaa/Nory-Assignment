@@ -1,1 +1,18 @@
-2022-10-18 00:34:05,649  nory_inventory_logger  ERROR  Invalid argument BobsBurgersInventory
+2022-10-18 00:44:08,399  utils_logger   INFO  [Query:CSV] Enabled modifier True with absence in locations
+ utils
+2022-10-18 00:44:08,401  utils_logger   INFO                       item_id        name_x  present_at_all_locations               modifier_id  enabled       name_y         absent                    sub_id              sub_name
+13  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  HN4QQMSASNZV2CKMEIS7MMOV  I'm too young to die
+14  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  6AEZVDHBOSRHBOUUEFU2RKJ3    Hey, not too rough
+15  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  5UG47TDMSPX643FGXJWRTUAP        Hurt me plenty
+16  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  US7AF7IJZUVLDKZDMQTTFZBI        Ultra-Violence
+17  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  LZWGOBX6GANXK46QWFXGNK7X            Nightmare!
+18  Y3BL5FUC3LOANT7OEUVUAGLC     Hamburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  HN4QQMSASNZV2CKMEIS7MMOV  I'm too young to die
+19  Y3BL5FUC3LOANT7OEUVUAGLC     Hamburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  6AEZVDHBOSRHBOUUEFU2RKJ3    Hey, not too rough
+20  Y3BL5FUC3LOANT7OEUVUAGLC     Hamburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  5UG47TDMSPX643FGXJWRTUAP        Hurt me plenty
+21  Y3BL5FUC3LOANT7OEUVUAGLC     Hamburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  US7AF7IJZUVLDKZDMQTTFZBI        Ultra-Violence
+22  Y3BL5FUC3LOANT7OEUVUAGLC     Hamburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  LZWGOBX6GANXK46QWFXGNK7X            Nightmare!
+23  F74BYEZ7KLTLLXC4CUPBHCII         Fries                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  HN4QQMSASNZV2CKMEIS7MMOV  I'm too young to die
+24  F74BYEZ7KLTLLXC4CUPBHCII         Fries                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  6AEZVDHBOSRHBOUUEFU2RKJ3    Hey, not too rough
+25  F74BYEZ7KLTLLXC4CUPBHCII         Fries                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  5UG47TDMSPX643FGXJWRTUAP        Hurt me plenty
+26  F74BYEZ7KLTLLXC4CUPBHCII         Fries                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  US7AF7IJZUVLDKZDMQTTFZBI        Ultra-Violence
+27  F74BYEZ7KLTLLXC4CUPBHCII         Fries                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  LZWGOBX6GANXK46QWFXGNK7X            Nightmare! utils

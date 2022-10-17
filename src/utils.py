@@ -63,9 +63,8 @@ def _get_modifier_by_name(mod_name=str, df=pd.DataFrame) -> pd.DataFrame:
 
 def _get_items_by_mod_enabled_with_absentlocations(df=pd.DataFrame) -> pd.DataFrame:
     utils_logger.info(f'[Query:CSV] Enabled modifier True with absence in locations\n')
-    result1 = df.loc[df.enabled==True,:]
-    result2 = df.loc[df.absent!='0',:]
-    result = pd.merge(result1,result2, on="modifier_id")
+    result = df.loc[(df.enabled==True) & (df.absent!='0'),:]
+
     if(len(result) > 0):
         utils_logger.info(result)
         return result
@@ -74,9 +73,8 @@ def _get_items_by_mod_enabled_with_absentlocations(df=pd.DataFrame) -> pd.DataFr
 
 def _get_items_by_mod_enabled(df=pd.DataFrame) -> pd.DataFrame:
     utils_logger.info(f'[Query:CSV] Enabled modifier True')
-    result1 = df.loc[df.enabled==True,:]
-    result2 = df.loc[df.absent=='0',:]
-    result = pd.merge(result1,result2, on="modifier_id")
+    result = df.loc[(df.enabled==True) & (df.absent=='0'),:]
+   
     if(len(result) > 0):
         utils_logger.info(result)
         return result
