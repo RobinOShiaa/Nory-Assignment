@@ -1,0 +1,7 @@
+full_name,email,addresss_1,address_2,city,postcode,country,iban,bic,hired_date,department,wage_type,wage_rate,position
+Jenny Matthews,jenny+jenny@nory.ai,12 Annamoe Terrace,Cabra,Dublin,D07A957,Ireland,N/A,N/A,2022-01-12,City Centre,ShiftRate,100.0,Barista
+Lisa Salmon,lisa+salmon@nory.ai,44 Grove Road,Flat 3,Dublin,,Ireland,N/A,N/A,2021-10-13,City Centre,HourlyRate,22.0,Manager
+Peter  Pan,pter+peter@nory.ai,10 South Circular Road,,Dublin,D08 F929,Ireland,N/A,N/A,2022-05-01,City Centre,HourlyRate,11.0,Chef
+Tom Jones,jones+jones@nory.ai,98 Greystones Avenue,,Bray,W12F123,N/A,N/A,N/A,2021-10-25,City Centre,HourlyRate,8.0,Front of House
+Conor Sheridan,sheridanconor2@gmail.com,155 Victoria Street,Flat 2,Dublin,D06 6712,Ireland,N/A,N/A,2022-08-21,3487,N/A,N/A,
+Consatinte  Upa,upa+upa@nory.ai,"St. Thomas Apartments, 78 Meath Street",Flat 12B,Dublin ,D2,Ireland,N/A,N/A,2021-06-30,City Centre,HourlyRate,16.0,Chef
