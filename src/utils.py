@@ -1,39 +1,13 @@
 import csv
+from numpy import NaN
 import pandas as pd
 import logger
 from datetime import date
 from decouple import config
 
 utils_logger = logger.get_logger("utils_logger")
-utils_logger.info('hello')
 
-def _get_ids_by_modifier_id(mod_id: str, df: pd.DataFrame) -> pd.DataFrame:
-    '''Return an item which contains a given modifier_id 
-    Args:
-        - mod_id (str): modifier id
-        - df (DataFrame): DataFrame to fetch mod_id
-    Returns:
-        - result (DataFrame):  
-    '''
-    utils_logger.info(f'[Query:CSV] Item ids based off Modifier id: {mod_id}')
-    result = df.loc[df.sub_id==mod_id,'item_id']
-    utils_logger.info(result)
-    return result
-
-def _get_modifiers_by_item_id(id=str, df=pd.DataFrame) -> pd.DataFrame:
-    '''Return all modifiers realted to a given item id 
-    Args:
-        - id (str): item id
-        - df (DataFrame): DataFrame to fetch id
-    Returns:
-        - result (DataFrame):  
-    '''
-    utils_logger.info(f'[Query:CSV] Modifiers based off Item id: {id}')
-    result = df.loc[df.item_id==id,'sub_id':'sub_name']
-    utils_logger.info(result)
-    return result
-
-def _get_modifier_by_id(mod_id: str, df: pd.DataFrame) -> pd.DataFrame:
+def _get_modifier_by_modid(mod_id: str, df: pd.DataFrame) -> pd.DataFrame:
     '''Return a modifier by its id.
     Args:
         - mod_id (str): modifier id
@@ -41,10 +15,34 @@ def _get_modifier_by_id(mod_id: str, df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         - result (DataFrame):  
     '''
-    utils_logger.info(f'[Query:CSV] Item ids based off Modifier id')
+    utils_logger.info(f'[Query:CSV] Modifier based off Modifier id\n')
     result = df.loc[df.modifier_id==mod_id,'modifier_id':'sub_name']
     utils_logger.info(result)
-    return result
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return
+
+def _get_sub_modifier_by_name(mod_name=str, df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Sub_Modifier By Name : {mod_name}\n')
+    result = df.loc[df.sub_name==mod_name,:]
+    utils_logger.info(result)
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return
+
+def _get_sub_modifier_by_id(mod_id=str, df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Sub_Modifier By ID : {mod_id}\n')
+    result = df.loc[df.sub_id==mod_id,:]
+    utils_logger.info(result)
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return
 
 def _get_modifier_by_name(mod_name=str, df=pd.DataFrame) -> pd.DataFrame:
     '''Return a modifier by it's name
@@ -54,17 +52,55 @@ def _get_modifier_by_name(mod_name=str, df=pd.DataFrame) -> pd.DataFrame:
     Returns:
         - result (DataFrame):  
     '''
-    utils_logger.info(f'[Query:CSV] Modifier By Name : {mod_name}')
+    utils_logger.info(f'[Query:CSV] Modifier By Name : {mod_name}\n')
     result = df.loc[df.name_y==mod_name,:]
     utils_logger.info(result)
-    return result
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return
 
-# I think this is incorrect
-def _get_all_items_with_modifier(df: dict):
-    utils_logger.info('[Query:CSV] Get All Modifiers')
-    result = df.loc[:,:]
-    utils_logger.info(result)
-    return result
+def _get_items_by_mod_enabled_with_absentlocations(df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Enabled modifier True with absence in locations\n')
+    result1 = df.loc[df.enabled==True,:]
+    result2 = df.loc[df.absent!='0',:]
+    result = pd.merge(result1,result2, on="modifier_id")
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return 
+
+def _get_items_by_mod_enabled(df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Enabled modifier True')
+    result1 = df.loc[df.enabled==True,:]
+    result2 = df.loc[df.absent=='0',:]
+    result = pd.merge(result1,result2, on="modifier_id")
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+    return 
+
+def _get_items_by_id(itemid=str, df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Item By ID : {itemid}\n')
+    result = df.loc[df.item_id==itemid,:]
+   
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+
+def _get_items_by_name(itemname=str, df=pd.DataFrame) -> pd.DataFrame:
+    utils_logger.info(f'[Query:CSV] Item By Name : {itemname}\n')
+    result = df.loc[df.name_x==itemname,:]
+    if(len(result) > 0):
+        utils_logger.info(result)
+        return result
+    utils_logger.error('No Results Obtained')
+
+
 
 def _dict_to_csv(dir: str, data: dict) -> None:
     '''Convert dict to CSV.
@@ -73,7 +109,7 @@ def _dict_to_csv(dir: str, data: dict) -> None:
         - data (dict): data to write to csv
     '''
     try:
-        utils_logger.info('Attempting to write CSV')
+        utils_logger.info('Attempting to write CSV\n')
         with open(dir, 'w+') as csvfile:
             fieldnames = data[0].keys()
             utils_logger.info(f'headers {fieldnames}')
@@ -85,6 +121,8 @@ def _dict_to_csv(dir: str, data: dict) -> None:
 
     except IOError as e:
         utils_logger.error(f"I/O error: {e} ")
+
+
 def _create_df(items: dict, modifiers: dict) -> pd.DataFrame:
     items_csv = []
     for item in items:
@@ -109,7 +147,6 @@ def _create_df(items: dict, modifiers: dict) -> pd.DataFrame:
                 "sub_id": mod["id"],
                 "sub_name": mod["name"]
             })
-    
     
     utils_logger.info(f'MODIFIERS\n{modifier_csv}')
     

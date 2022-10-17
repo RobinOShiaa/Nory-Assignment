@@ -2,7 +2,7 @@ from re import M
 from square.client import Client
 import pandas as pd
 from decouple import config
-from utils import _get_modifier_by_name, _get_modifiers_by_item_id, _get_modifier_by_id, _get_all_items_with_modifier, _df_to_csv, _create_df
+from utils import  _get_items_by_id, _get_items_by_mod_enabled, _get_items_by_mod_enabled_with_absentlocations, _get_items_by_name, _get_modifier_by_modid, _get_modifier_by_name, _df_to_csv, _create_df, _get_sub_modifier_by_id, _get_sub_modifier_by_name
 import sys
 from datetime import date
 import logger
@@ -42,7 +42,7 @@ def _format_catalog(catalog):
                     mod_data = item.get("modifier_list_data").get("modifiers")
                     modifiers[item["id"]] = {
                         "name": item["modifier_list_data"]["name"],
-                        "absent_at_location_ids": ' '.join(item.get("absent_at_location_ids")) if (item.get("absent_at_location_ids") != None) else '' ,
+                        "absent_at_location_ids": ' '.join(item.get("absent_at_location_ids")) if (item.get("absent_at_location_ids") != None) else '0' ,
                         "modifiers": [{ 
                             "id": i["id"], 
                             "name": i["modifier_data"]["name"],
@@ -53,6 +53,7 @@ def _format_catalog(catalog):
 
 
 if __name__ == "__main__":
+    print()
     if len(sys.argv) == 1:
         catalog = _retreive_catalog()
         items, modifiers = _format_catalog(catalog)
@@ -62,24 +63,40 @@ if __name__ == "__main__":
         df = _create_df(items, modifiers)
         _df_to_csv(df, path=config("CSV_INVENTORY_PATH"), file_name="BobsBurgersInventory")
 
-    else:
+    elif(len(sys.argv) >= 2):
         df = pd.read_csv(f'{config("CSV_INVENTORY_PATH")}BobsBurgersInventory-{date.today()}.csv')
         func = sys.argv[1]
+        user_input = (' ').join(sys.argv[2:])
 
-        if func == "search_by_id":
-        # 'RK4X4WGVVCUJUWUNJB3CCOC5\n'
-        # Search for a specific modifier by its ID and or name
-        # _get_modifiers_by_item_id('RK4X4WGVVCUJUWUNJB3CCOC5\n', df)
-        # _get_modifier_by_id('WXJBOEIZOMXMRHXH7SVYVLIY\n',df)
-        # _get_modifier_by_name("Extra spice\n", df)
-        # _get_all_items_with_modifier(df)
-            pass
+        if func == "search_by_modid":
+            _get_modifier_by_modid(user_input, df)
 
-        elif function == "search_by_name":
-            # Search for a specific modifier by its ID and or name
-        # _get_modifiers_by_item_id('RK4X4WGVVCUJUWUNJB3CCOC5\n', df)
-        # _get_modifier_by_id('WXJBOEIZOMXMRHXH7SVYVLIY\n',df)
-        # _get_modifier_by_name("Extra spice\n", df)
-        # _get_all_items_with_modifier(df)
-            print(_get_modifier_by_name("Extra spice\n", df))
-            pass
+        elif func == "search_by_modname":
+            _get_modifier_by_name(user_input, df)
+
+        elif func == "search_by_sub_modname":
+            _get_sub_modifier_by_name(user_input, df)
+
+        elif func == "search_by_sub_modid":
+            _get_sub_modifier_by_id(user_input, df)
+
+        elif func == "search_by_items_id":
+            _get_items_by_id(user_input, df)
+
+        elif func == "search_by_items_name":
+            _get_items_by_name(user_input,df)
+
+        elif func == "search_by_modifier_enabled_with_absent_locations":
+            _get_items_by_mod_enabled_with_absentlocations(df)
+
+        elif func == "search_by_modifier_enabled":
+            _get_items_by_mod_enabled(df)
+
+        else:
+            nory_inventory_logger.error('Invalid argument')
+
+
+
+    else:
+        nory_inventory_logger.error("Invalid argument to Nory Inventory Search System")
+
