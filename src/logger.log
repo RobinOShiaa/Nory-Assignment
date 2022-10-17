@@ -1,6 +1,6 @@
-2022-10-18 00:44:08,399  utils_logger   INFO  [Query:CSV] Enabled modifier True with absence in locations
+2022-10-18 00:46:23,873  utils_logger   INFO  [Query:CSV] Enabled modifier True with absence in locations
  utils
-2022-10-18 00:44:08,401  utils_logger   INFO                       item_id        name_x  present_at_all_locations               modifier_id  enabled       name_y         absent                    sub_id              sub_name
+2022-10-18 00:46:23,875  utils_logger   INFO                       item_id        name_x  present_at_all_locations               modifier_id  enabled       name_y         absent                    sub_id              sub_name
 13  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  HN4QQMSASNZV2CKMEIS7MMOV  I'm too young to die
 14  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  6AEZVDHBOSRHBOUUEFU2RKJ3    Hey, not too rough
 15  RK4X4WGVVCUJUWUNJB3CCOC5  Cheeseburger                      True  RLNOGZ5WIO3GUBHSUAFVPQHN     True  Extra spice  LZ7GSDCVVFP39  5UG47TDMSPX643FGXJWRTUAP        Hurt me plenty

@@ -64,7 +64,12 @@ if __name__ == "__main__":
         _df_to_csv(df, path=config("CSV_INVENTORY_PATH"), file_name="BobsBurgersInventory")
 
     elif(len(sys.argv) >= 2):
-        df = pd.read_csv(f'{config("CSV_INVENTORY_PATH")}BobsBurgersInventory-{date.today()}.csv')
+        
+        try:
+            df = pd.read_csv(f'{config("CSV_INVENTORY_PATH")}BobsBurgersInventory-{date.today()}.csv')
+        except:
+            nory_inventory_logger.info('No Latest CSV Created, Please Run program by default first to create csv to read')
+
         func = sys.argv[1]
         user_input = (' ').join(sys.argv[2:])
 
