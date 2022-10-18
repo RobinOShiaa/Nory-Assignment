@@ -154,8 +154,8 @@ def _create_df(items: dict, modifiers: dict) -> pd.DataFrame:
     modifiers_df = pd.DataFrame(modifier_csv)
     utils_logger.info(f'MODIFIERS_DATAFRAME\n{modifiers_df}')
 
-    df = pd.merge(items_df, modifiers_df, on='modifier_id', how='inner')
-    utils_logger.info(f'ITEMS JOIN MODIFIERS DATAFRAMES\n {df}')
+    df = pd.merge(items_df, modifiers_df, on='modifier_id', how='outer')
+    utils_logger.info(f'ITEMS JOIN MODIFIERS DATAFRAMES\n {df.drop_duplicates()}')
 
     return df
 
